@@ -35,7 +35,7 @@ Asena.addCommand({pattern: 'sticker', fromMe: false, desc: Lang.STICKER_DESC}, (
         
             await message.sendMessage(fs.readFileSync('./output.webp'), MessageType.sticker);
         });
-        return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
+        return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: false})
     }
 
     ffmpeg(location)
@@ -44,5 +44,5 @@ Asena.addCommand({pattern: 'sticker', fromMe: false, desc: Lang.STICKER_DESC}, (
         .on('end', async () => {
             await message.sendMessage(fs.readFileSync('sticker.webp'), MessageType.sticker);
         });
-    return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
+    return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: false})
 }));
